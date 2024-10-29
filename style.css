@@ -1,0 +1,116 @@
+@import './light.css';
+
+
+:root {
+    --color-fond: #111;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    background-color: var(--color-fond);
+    font-family: inter, sans-serif;
+    margin: 1rem;
+}
+
+.text {
+    color: #f0f0f0;
+    margin-bottom: 36px;
+}
+
+.glow-section {
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+
+    
+ @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+}
+
+.card {
+    width: 250px;
+    height: 350px;
+    border-radius: 1rem;
+    position: relative; /*Obligatoire pour un enfant en position: absolute;*/
+    cursor: pointer;
+    z-index: 1; /*Obligatoire pour l'ordre de superposition*/
+    overflow: hidden; /*Obligatoire pour qu'aucun élément dépasse ce bloc*/
+    padding: 5px; /*Obligatoire car cela va être l'épaisseur de la lumière*/
+    background-color: rgb(128,128,128,0.1);
+}
+
+.card-sup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    width: 100%;
+    height: 100%;
+    font-size: 28px;
+    background-color: rgb(26,26,26);
+    transition: background-color 0.4s ease-out;
+}
+
+/*Ce code permet d'appliquer une opacité et transparence
+Ici la 4eme valeur doit être comprise entre 0 et 1, la valeur choisie est 0.6
+0 = complètement transparent et 1 = opaque
+
+pointer: fine : Cette valeur signifie que le dispositif de pointage peut interagir 
+de manière précise avec des éléments fins et petits, comme une souris d'ordinateur ou 
+un stylet.*/
+
+@media (pointer: fine) {
+        .card:hover > .card-sup {
+            background-color: rgb(26,26,26,0.9);
+        }
+    }
+
+
+.blob {
+    filter: blur(40px);
+    position: absolute; /*Obligatoire avec le parent en position: relative;*/
+    top: 0; /*Obligatoire*/
+    left: 0; /*Obligatoire*/
+    z-index: -1;  /*Obligatoire pour l'odre de superposition*/
+    width: 250px; /*Obligatoire taille fixe*/
+    height: 250px; /*Obligatoire taille fixe*/
+    border-radius: 50%; /*Obligatoire taille fixe*/
+    opacity: 0; /*Obligatoire car fonction JS*/
+    background-color: rgb(255,255,255,0.8);
+}
+
+.blob--1 {
+    background-image: var(--light-ice);
+  background-blend-mode: var(--mode-ice);
+}
+
+.blob--2 {
+    background-image: var(--light-love);
+    background-blend-mode: var(--mode-love);
+  }
+  
+  .blob--3 {
+    background-image: var(--light-white);
+    background-blend-mode: var(--mode-white);
+  }
+  
+
+  .blob--4 {
+    background-image: var(--light-fire);
+    background-blend-mode: var(--mode-fire);
+  }
+  
